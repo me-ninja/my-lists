@@ -99,7 +99,19 @@ li {
   font-size: 1rem;
   margin-top: 0.5rem;
   letter-spacing: 1px;
+  color: #c70f2e;
+  text-shadow:
+    0 0 5px #ad1212,
+    0 0 10px #ad1212,
+    0 0 20px #ad1212;
+  animation: pulseLED 2s infinite ease-in-out;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  margin: 0;
+
 }
+
+
 
 .section-break {
   text-align: center;
@@ -109,4 +121,15 @@ li {
 .contact-icon svg {
   filter: drop-shadow(0 0 6px #22ff88);
   animation: pulseLED 2.5s infinite ease-in-out;
+}
+
+.project-preview img {
+  width: 60%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #22ff88;
+  transition: transform 0.3s;
+}
+.project-preview img:hover {
+  transform: scale(1.02);
 }
