@@ -124,8 +124,8 @@ li {
 }
 
 .project-preview img {
-  width: 60%;
-  max-width: 500px;
+  width: 50%;
+  max-width: 400px;
   border-radius: 8px;
   box-shadow: 0 0 12px #22ff88;
   transition: transform 0.3s;
@@ -157,4 +157,9 @@ li {
     text-align: center;
     margin: 1em auto;
   }
+}
+
+.project-preview #wwc-quiz-shot {
+  width: 50%;
+  max-width: 448px;
 }
