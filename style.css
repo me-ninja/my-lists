@@ -1,7 +1,7 @@
 :root {
   --bg: #0f172a;
   --primary: #1e293b;
-  --accent: #3b82f6;
+  --accent: #60a5fa; /* Brighter blue for better contrast */
   --text: #e2e8f0;
   --subtle: #94a3b8;
 }
@@ -12,6 +12,7 @@ body {
   color: var(--text);
   margin: 0;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 header {
@@ -20,12 +21,13 @@ header {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: var(--accent);
   margin-bottom: 0.5rem;
 }
 
 h2 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
   color: var(--subtle);
   margin-top: 2rem;
 }
@@ -35,21 +37,34 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a:focus {
   text-decoration: underline;
 }
 
 code {
   color: var(--accent);
+  font-family: 'Courier New', monospace;
 }
 
 ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 li {
   margin: 0.5rem 0;
+  background: var(--primary);
+  padding: 1em;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #2d3748;
 }
 
 #starfield {
@@ -64,7 +79,7 @@ li {
 
 .plc-header {
   font-family: 'Orbitron', sans-serif;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
   color: #22ff88;
   text-shadow:
     0 0 5px #22ff88,
@@ -74,6 +89,19 @@ li {
   text-align: center;
   letter-spacing: 0.2rem;
   margin: 0;
+}
+
+.subtext {
+  color: #c70f2e;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  text-align: center;
+  letter-spacing: 0.2rem;
+  margin: 0.5rem 0;
+  text-shadow:
+    0 0 5px #ad1212,
+    0 0 10px #ad1212,
+    0 0 20px #ad1212;
+  animation: pulseLED 2s infinite ease-in-out;
 }
 
 @keyframes pulseLED {
@@ -93,29 +121,21 @@ li {
   }
 }
 
-.subtext {
-  text-align: center;
-  color: #94a3b8;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  letter-spacing: 1px;
-  color: #c70f2e;
-  text-shadow:
-    0 0 5px #ad1212,
-    0 0 10px #ad1212,
-    0 0 20px #ad1212;
-  animation: pulseLED 2s infinite ease-in-out;
-  text-align: center;
-  letter-spacing: 0.2rem;
-  margin: 0;
-
-}
-
-
-
 .section-break {
   text-align: center;
   margin: 3rem 0;
+  animation: fadeUp 1s ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .contact-icon svg {
@@ -124,12 +144,16 @@ li {
 }
 
 .project-preview img {
-  width: 50%;
+  width: 100%;
   max-width: 400px;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 0 12px #22ff88;
   transition: transform 0.3s;
+  display: block;
+  margin: 0 auto;
 }
+
 .project-preview img:hover {
   transform: scale(1.02);
 }
@@ -150,16 +174,19 @@ li {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
   .email-link {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0.75em 1.25em;
     display: block;
     text-align: center;
     margin: 1em auto;
   }
-}
 
-.project-preview #wwc-quiz-shot {
-  width: 50%;
-  max-width: 448px;
+  li {
+    font-size: 0.95rem;
+  }
 }
